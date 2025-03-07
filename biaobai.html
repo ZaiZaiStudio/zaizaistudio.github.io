@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给乐乐的专属情书</title>
+    <link href="https://fonts.googleapis.com/css2?family=Long+Cang&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #ff9f9f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
+            font-family: 'Long Cang', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 飘落的心形动画 */
+        .heart {
+            position: absolute;
+            color: var(--primary-color);
+            animation: fall 15s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 标题样式 */
+        .header {
+            text-align: center;
+            margin: 3rem 0;
+            animation: fadeIn 2s;
+        }
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* 情书内容 */
+        .love-letter {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(255, 107, 107, 0.1);
+            margin: 2rem 0;
+            position: relative;
+            transform: rotate(-1deg);
+        }
+
+        .love-letter::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ff6b6b" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat;
+            background-size: contain;
+        }
+
+        /* 照片展示 */
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto;
+            border: 5px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255,107,107,0.3);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        /* 互动按钮 */
+        .response-buttons {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .love-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 1rem;
+        }
+
+        .love-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.4);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 生成飘落的心形 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.body;
+            for(let i=0; i<50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                container.appendChild(heart);
+            }
+        });
+    </script>
+
+    <div class="container">
+        <header class="header">
+            <h1>❤ 乐乐，你是我生命中的光 ❤</h1>
+        </header>
+
+        <div class="photo-frame">
+            <img src="Asstes/Photo.jpg" alt="宝宝的照片" style="width:100%; height:100%; object-fit: cover;">
+        </div>
+
+        <div class="love-letter">
+            <p style="font-size: 1.3rem; line-height: 2; text-indent: 2em;">
+                亲爱的乐乐：<br><br>
+                从第一次相遇的那天起，你的笑容就像春天的第一缕阳光，温柔地融化了我的整个世界。你的眼睛里有星辰大海，你的话语里带着让人安心的力量。<br><br>
+                记得那次雨中共伞，你小心翼翼地把伞偏向我这边；记得你认真工作时的侧脸，睫毛在阳光下投下温柔的阴影；记得你分享生活小事时的神采飞扬，每个细节都让我心动不已。<br><br>
+                我想和你一起看遍四季变换，从樱花纷飞的春日到白雪皑皑的冬夜；想和你分享生活中的每个小确幸，从清晨的第一杯咖啡到深夜的星空私语。<br><br>
+                你愿意让我们的故事，从今天开始写下新的篇章吗？
+            </p>
+        </div>
+
+        <div class="response-buttons">
+            <button class="love-btn" onclick="showConfetti()">❤ 我愿意！ ❤</button>
+            <button class="love-btn" style="background: var(--secondary-color)" 
+                    onmouseover="this.style.transform='rotate(5deg)'"
+                    onmouseout="this.style.transform='rotate(0deg)'">😊 考虑一下～</button>
+        </div>
+    </div>
+
+    <script>
+        function showConfetti() {
+            // 添加烟花特效
+            for(let i=0; i<50; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                particle.style.width = '8px';
+                particle.style.height = '8px';
+                particle.style.backgroundColor = ['#ff6b6b', '#ff9f9f', '#ffd3d3'][i%3];
+                particle.style.borderRadius = '50%';
+                particle.style.animation = `explode 1s ease-out`;
+                document.body.appendChild(particle);
+
+                setTimeout(() => particle.remove(), 1000);
+            }
+            
+            alert('🎉 太棒了！我们的故事即将开始～');
+        }
+    </script>
+</body>
+</html>
